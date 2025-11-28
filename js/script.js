@@ -155,13 +155,16 @@ function closePopup() {
 
 // Certificates Sections
 function openPopup(src) {
-  document.getElementById('popup-img').src = src;
-  document.getElementById('popup').style.display = 'flex';
+  const popup = document.getElementById("popup");
+  const popupImg = document.getElementById("popup-img");
+
+  popup.style.display = "flex";
+  popupImg.src = src;
 }
 
-function closePopup() {
-  document.getElementById('popup').style.display = 'none';
-}
+document.getElementById("popup").addEventListener("click", function () {
+  this.style.display = "none";
+});
 
 
 

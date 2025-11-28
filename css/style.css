@@ -1126,88 +1126,106 @@ select {
 /* Certificate card styling */
 /* Hover Animation */
 /* Certificate image preview */
+/* Fade-in animation */
+/* ===========================
+   CERTIFICATES SECTION 
+=========================== */
+
+/* GRID: 2 per row */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+/* Certificate Box */
+.certificate-item-inner {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+  opacity: 0;
+  animation: fadeIn .8s ease forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Zoom */
+.certificate-item-inner:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+/* Image Style */
 .cert-img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  margin-bottom: 10px;
+  transition: transform .3s ease;
 }
 
-/* Hover effect on image */
 .cert-img:hover {
   transform: scale(1.05);
 }
 
-/* Card hover effect */
-.service-item-inner {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding-bottom: 15px;
-}
-
-.service-item-inner:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Buttons */
-.download-btn, .view-btn {
+/* View Button */
+.view-btn {
   background: #007bff;
   color: #fff;
-  padding: 7px 14px;
   border: none;
-  border-radius: 5px;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-right: 6px;
-  text-decoration: none;
-  font-size: 14px;
+  transition: .3s;
 }
 
-.download-btn:hover, .view-btn:hover {
+.view-btn:hover {
   background: #0056b3;
 }
-
-/*text color-----*/
-
-.certificate-item-inner h4 {
-    color: #e63946; /* Attractive red */
-}
-
 
 /* Popup */
 .popup {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
   z-index: 9999;
-  animation: fadeIn 0.3s ease;
 }
 
 .popup img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 8px;
-  animation: zoomIn 0.3s ease;
+  border-radius: 10px;
+  animation: popFade .3s ease;
 }
 
-/* Fade-in effect */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes popFade {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  .cert-img {
+    height: 180px;
+  }
 }
+
 
 
 

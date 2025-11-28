@@ -338,7 +338,7 @@
             <!-- Service Item -->
             <div class="service-item padd-15">
               <div class="service-item-inner">
-                <div class="icon"><i class="fa fa-satellite-dish"></i></div>
+                <div class="icon"><i class="fa fa-signal"></i></div>
                 <h4>Antenna & RF Engineering</h4>
                 <p>Antenna design, microwave circuits, RF measurements.</p>
               </div>
@@ -540,69 +540,63 @@
 
          <!-- Certificates Section -->
          <!-- Certificates Section -->
-       <section class="certificates section" id="certificates">
-       <div class="container">
-       <div class="row">
-       <div class="section-title padd-15">
-       <h2>Certificates</h2>
+      <!-- ================= Certificates Section ================= -->
+<section class="certificates section" id="certificates">
+  <div class="container">
+    <div class="row">
+      <div class="section-title padd-15">
+        <h2>Certificates</h2>
       </div>
     </div>
 
-    <div class="row">
+    <div class="cert-grid">
 
-      <!-- Certificate item -->
-      <div class="certificate-item padd-15">
+      <!-- Certificate 1 -->
+      <div class="certificate-item">
         <div class="certificate-item-inner">
           <img src="images/robot.jpg" class="cert-img" onclick="openPopup(this.src)">
-
           <h4>Certificate of Robotics</h4>
-          <p>Certified by JNTUH in Robotics Trainning.</p>
-          <a href="images/robot.jpg" download class="download-btn">Download</a>
+          <p>Certified by JNTUH in Robotics Training.</p>
           <button class="view-btn" onclick="openPopup('images/robot.jpg')">View Full</button>
         </div>
       </div>
 
       <!-- Certificate 2 -->
-      <div class="certificate-item padd-15">
+      <div class="certificate-item">
         <div class="certificate-item-inner">
           <img src="images/netmax.jpg" class="cert-img" onclick="openPopup(this.src)">
           <h4>Embedded Systems Design & Programming</h4>
           <p>Certified in Arduino & embedded programming.</p>
-          <a href="images/netmax.jpg" download class="download-btn">Download</a>
           <button class="view-btn" onclick="openPopup('images/netmax.jpg')">View Full</button>
         </div>
       </div>
 
       <!-- Certificate 3 -->
-      <div class="certificate-item padd-15">
+      <div class="certificate-item">
         <div class="certificate-item-inner">
           <img src="images/ntc.jpg" class="cert-img" onclick="openPopup(this.src)">
-   
           <h4>Nepal Telecom</h4>
-          <p>Certified in IMU Sextion, IT Section, transmission, Mobile & Project</p>
-          <a href="images/ntc.jpg" download class="download-btn">Download</a>
+          <p>Certified in IMU Section, IT, Transmission & Mobile Project.</p>
           <button class="view-btn" onclick="openPopup('images/ntc.jpg')">View Full</button>
         </div>
       </div>
 
       <!-- Certificate 4 -->
-      <div class="certificate-item padd-15">
+      <div class="certificate-item">
         <div class="certificate-item-inner">
           <img src="images/highway.jpeg" class="cert-img" onclick="openPopup(this.src)">
           <h4>Experience as Technical Support</h4>
-          <p>Certified by Highway Techno Institute Pvt.Ltd.</p>
-          <a href="images/highway.jpeg" download class="download-btn">Download</a>
-          <button class="view-btn" onclick="openPopup('images/highway')">View Full</button>
+          <p>Certified by Highway Techno Institute Pvt. Ltd.</p>
+          <button class="view-btn" onclick="openPopup('images/highway.jpeg')">View Full</button>
         </div>
       </div>
 
       <!-- Certificate 5 -->
-      <div class="certificate-item padd-15">
+      <div class="certificate-item">
         <div class="certificate-item-inner">
           <img src="images/citizen.jpeg" class="cert-img" onclick="openPopup(this.src)">
           <h4>Experienced as a Trainer & IT Support</h4>
-          <p>Certified by Citizen Infotech Pvt.Ltd.</p>
-          <a href="images/citizen.jpeg" download class="download-btn">Download</a>
+          <p>Certified by Citizen Infotech Pvt. Ltd.</p>
           <button class="view-btn" onclick="openPopup('images/citizen.jpeg')">View Full</button>
         </div>
       </div>
@@ -611,10 +605,25 @@
   </div>
 </section>
 
-<!-- Popup -->
-<div id="popup" class="popup" onclick="closePopup()">
+<!-- ================= Popup ================= -->
+<div id="popup" class="popup">
   <img id="popup-img">
 </div>
+<!-- Popup -->
+
+<script>
+function openPopup(src) {
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popup-img");
+    popup.style.display = "flex";
+    popupImg.src = src;
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
 
          <!--certificates Section ends -->
          <!--certificates Section ends -->
