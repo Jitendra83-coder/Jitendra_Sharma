@@ -15,6 +15,26 @@ window.ityped.init(document.querySelector('.iTyped'), {
     loop: true
 });
 
+
+// Select toggler and aside
+const navToggler = document.querySelector('.nav-toggler');
+const aside = document.querySelector('.aside');
+
+// Select all sections safely
+const sections = document.querySelectorAll('.section');
+
+if (navToggler && aside && sections.length > 0) {
+    navToggler.addEventListener('click', () => {
+        aside.classList.toggle('open'); // toggle aside open
+        sections.forEach(section => {
+            section.classList.toggle('open'); // toggle section shift
+        });
+    });
+}
+
+
+
+
 // Portfolio Item Filter
 
 const filterContainer = document.querySelector('.portfolio-filter'),
@@ -286,8 +306,7 @@ function showSection(element)
     document.querySelector('#'+target).classList.add('active');
 }
 
-const navTogglerBtn = document.querySelector('.nav-toggler'),
-    aside = document.querySelector('.aside');
+const navTogglerBtn = document.querySelector('.nav-toggler');
 
 navTogglerBtn.addEventListener('click', asideSectionTogglerBtn);
 
