@@ -5,21 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Software & Programming</title>
 <style>
-  body { font-family: 'Arial', sans-serif; background:#f7f7f7; margin:0; padding:0; color:#333; line-height:1.6; }
-  .container { max-width:900px; margin:50px auto; padding:20px; background:#fff; border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,0.1);}
-  h1 { color:#4361ee; margin-bottom:20px; }
-  h2, h3 { color:#1a1a1a; margin-top:20px; }
-  p { margin-bottom:15px; }
-  ul { margin-bottom:15px; }
-  a { color:#4361ee; text-decoration:none; }
-  a:hover { text-decoration:underline; }
+  /* ===== Modern UI Design ===== */
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #eef1f7;
+  margin: 0;
+  padding: 0;
+  color: #2d2d2d;
+  line-height: 1.7;
+  transition: 0.3s ease;
+}
+
+/* Smooth fade for all elements */
+* {
+  transition: 0.3s ease;
+}
+
+.container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Headings */
+h1 {
+  color: #4f46ef;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #111;
+  margin-top: 30px;
+  font-size: 1.5rem;
+  border-left: 4px solid #4f46ef;
+  padding-left: 12px;
+}
+
+/* Paragraph and List */
+p, ul li {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+/* Stylish list cards */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+ul li {
+  background: #f5f6ff;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border-left: 4px solid #4f46ef;
+}
+
+/* Modern button-style link */
+a {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: #4f46ef;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+a:hover {
+  background: #3730a3;
+  transform: translateY(-3px);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 </style>
+
+<!-- Google Font (Inter) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- External Modern CSS -->
+<link rel="stylesheet" href="modern-style.css">
+
 </head>
 <body>
 
 <div class="container">
   <h1>Software & Programming</h1>
   <p><strong>Date:</strong> 14 April 2018</p>
+
   <p>Many ECE graduates transition into software roles thanks to their strong foundation in systems and embedded programming. Today, software and programming skills are highly sought after in web development, mobile apps, AI, and data science.</p>
 
   <h2>Popular Career Paths</h2>
@@ -36,7 +123,7 @@
   <h2>Future Outlook</h2>
   <p>Software and programming will continue to dominate the tech world. Skills like AI, IoT, and machine learning, combined with embedded systems understanding, give engineers a competitive edge.</p>
 
-  <p><a href="index.html">← Back to Blogs</a></p>
+  <a href="index.html">← Back to Blogs</a>
 </div>
 
 </body>
