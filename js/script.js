@@ -284,3 +284,99 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* AOS init */
+AOS.init({ duration:700, easing:'ease-out-cubic', once:true });
+
+/* Dark mode toggle & persistence */
+const toggleDark = document.getElementById('toggle-dark');
+const stored = localStorage.getItem('site-theme');
+if (stored === 'dark') { document.body.classList.add('dark'); toggleDark.checked = true; }
+toggleDark.addEventListener('change', () => {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('site-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+});
+
+/* Search filter */
+const searchInput = document.getElementById('searchInput');
+const blogGrid = document.getElementById('blogGrid');
+const blogCards = blogGrid.querySelectorAll('.blog-card');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  blogCards.forEach(card => {
+    const title = card.dataset.title.toLowerCase();
+    const body = (card.textContent || '').toLowerCase();
+    const show = title.includes(q) || body.includes(q);
+    card.style.display = show ? '' : 'none';
+  });
+  AOS.refresh();
+});
+
+/* Category filter */
+const catBtns = document.querySelectorAll('.cat-btn');
+catBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    catBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    blogCards.forEach(card => {
+      const match = (cat === 'all') || (card.dataset.cat === cat);
+      card.style.display = match ? '' : 'none';
+    });
+    AOS.refresh();
+  });
+});
+
+/* Share modal logic */
+const shareModal = document.getElementById('shareModal');
+const shareLinks = {
+  facebook: document.getElementById('share-facebook'),
+  twitter: document.getElementById('share-twitter'),
+  whatsapp: document.getElementById('share-whatsapp'),
+  copyBtn: document.getElementById('copyLinkBtn'),
+  closeBtn: document.getElementById('closeShare')
+};
+
+// When a share button (card or spotlight) clicked:
+document.querySelectorAll('.share, .share-small').forEach(wrapper => {
+  wrapper.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = wrapper.dataset.url ? new URL(wrapper.dataset.url, window.location.origin).href : window.location.href;
+    const title = wrapper.dataset.title || document.title;
+    openShareModal(url, title);
+  });
+});
+
+function openShareModal(url, title) {
+  // set links
+  shareLinks.facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  shareLinks.twitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+  shareLinks.whatsapp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`;
+
+  // set attributes for anchors
+  document.getElementById('share-facebook').setAttribute('href', shareLinks.facebook.href);
+  document.getElementById('share-twitter').setAttribute('href', shareLinks.twitter.href);
+  document.getElementById('share-whatsapp').setAttribute('href', shareLinks.whatsapp.href);
+
+  // store current url for copy
+  shareModal.dataset.currentUrl = url;
+  shareModal.setAttribute('aria-hidden','false');
+}
+
+/* copy link */
+document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+  const url = shareModal.dataset.currentUrl || window.location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = document.getElementById('copyLinkBtn');
+    btn.textContent = 'Copied!';
+    setTimeout(()=> btn.textContent = 'Copy link', 1500);
+  } catch (err) {
+    alert('Copy failed: ' + url);
+  }
+});
+
+/* close share */
+document.getElementById('closeShare').addEventListener('click', () => shareModal.setAttribute('aria-hidden','true'));
+shareModal.addEventListener('click', e => { if (e.target === shareModal) shareModal.setAttribute('aria-hidden','true'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') shareModal.setAttribute('aria-hidden','true'); });
