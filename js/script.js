@@ -150,22 +150,57 @@ function closePopup() {
   document.body.classList.remove("popup-active");
 }
 
+//certificate section
+// Certificate password verification
+//certificate password modal
 
 
+const correctPassword = "Jitendra@83";
+let currentCertSrc = "";
 
-// Certificates Sections
-function openPopup(src) {
-  const popup = document.getElementById("popup");
-  const popupImg = document.getElementById("popup-img");
-
-  popup.style.display = "flex";
-  popupImg.src = src;
+function openPasswordModal(src) {
+  currentCertSrc = src;
+  document.getElementById("password-modal").style.display = "flex";
 }
 
-document.getElementById("popup").addEventListener("click", function () {
-  this.style.display = "none";
-});
+function closePasswordModal() {
+  document.getElementById("password-modal").style.display = "none";
+  document.getElementById("cert-password").value = "";
+}
 
+function verifyPassword() {
+  const entered = document.getElementById("cert-password").value;
+  if (entered === correctPassword) {
+    closePasswordModal();
+    openPopup(currentCertSrc);
+  } else {
+    alert("Incorrect password!");
+  }
+}
+
+function openPopup(src) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("popup-img").src = src;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+/* Disable Right Click */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* Disable Screenshot Keys */
+document.addEventListener("keydown", e => {
+  if (
+    e.key === "PrintScreen" ||
+    (e.ctrlKey && e.key === "p") ||
+    (e.ctrlKey && e.shiftKey && e.key === "s")
+  ) {
+    e.preventDefault();
+    alert("Screenshots are disabled.");
+  }
+});
 
 
 // close lightbox

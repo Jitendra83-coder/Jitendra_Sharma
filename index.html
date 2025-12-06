@@ -541,6 +541,7 @@
          <!-- Certificates Section -->
          <!-- Certificates Section -->
       <!-- ================= Certificates Section ================= -->
+<!-- ================= Certificates Section ================= -->
 <section class="certificates section" id="certificates">
   <div class="container">
     <div class="row">
@@ -548,85 +549,79 @@
         <h2>Certificates</h2>
       </div>
     </div>
+  </div>
 
-    <div class="cert-grid">
+  <div class="cert-grid">
 
-      <!-- Certificate 1 -->
-      <div class="certificate-item">
-        <div class="certificate-item-inner">
-          <img src="images/robot.jpg" class="cert-img" onclick="openPopup(this.src)">
-          <h4>Certificate of Robotics</h4>
-          <p>Certified by JNTUH in Robotics Training.</p>
-          <button class="view-btn" onclick="openPopup('images/robot.jpg')">View Full</button>
-        </div>
+    <!-- Certificate Item -->
+    <div class="certificate-item">
+      <div class="certificate-item-inner cert-wrapper">
+        <img src="images/robot.jpg" class="cert-img">
+        <div class="watermark">Protected Image</div>
+        <h4>Certificate of Robotics</h4>
+        <p>Certified by JNTUH in Robotics Training.</p>
+        <button class="view-btn" onclick="openPasswordModal('images/robot.jpg')">View Full</button>
       </div>
+    </div>
 
-      <!-- Certificate 2 -->
-      <div class="certificate-item">
-        <div class="certificate-item-inner">
-          <img src="images/netmax.jpg" class="cert-img" onclick="openPopup(this.src)">
-          <h4>Embedded Systems Design & Programming</h4>
-          <p>Certified in Arduino & embedded programming.</p>
-          <button class="view-btn" onclick="openPopup('images/netmax.jpg')">View Full</button>
-        </div>
+    <div class="certificate-item">
+      <div class="certificate-item-inner cert-wrapper">
+        <img src="images/netmax.jpg" class="cert-img">
+        <div class="watermark">Protected Image</div>
+        <h4>Embedded Systems Design & Programming</h4>
+        <p>Certified in Arduino & embedded programming.</p>
+        <button class="view-btn" onclick="openPasswordModal('images/netmax.jpg')">View Full</button>
       </div>
+    </div>
 
-      <!-- Certificate 3 -->
-      <div class="certificate-item">
-        <div class="certificate-item-inner">
-          <img src="images/ntc.jpg" class="cert-img" onclick="openPopup(this.src)">
-          <h4>Nepal Telecom</h4>
-          <p>Certified in IMU Section, IT, Transmission & Mobile Project.</p>
-          <button class="view-btn" onclick="openPopup('images/ntc.jpg')">View Full</button>
-        </div>
+    <div class="certificate-item">
+      <div class="certificate-item-inner cert-wrapper">
+        <img src="images/ntc.jpg" class="cert-img">
+        <div class="watermark">Protected Image</div>
+        <h4>Nepal Telecom</h4>
+        <p>Certified in IMU Section, IT, Transmission & Mobile Project.</p>
+        <button class="view-btn" onclick="openPasswordModal('images/ntc.jpg')">View Full</button>
       </div>
+    </div>
 
-      <!-- Certificate 4 -->
-      <div class="certificate-item">
-        <div class="certificate-item-inner">
-          <img src="images/highway.jpeg" class="cert-img" onclick="openPopup(this.src)">
-          <h4>Experience as Technical Support</h4>
-          <p>Certified by Highway Techno Institute Pvt. Ltd.</p>
-          <button class="view-btn" onclick="openPopup('images/highway.jpeg')">View Full</button>
-        </div>
+    <div class="certificate-item">
+      <div class="certificate-item-inner cert-wrapper">
+        <img src="images/citizen.jpeg" class="cert-img">
+        <div class="watermark">Protected Image</div>
+        <h4>CCNA Routing & Switching</h4>
+        <p>Certified by Cisco in Networking Fundamentals.</p>
+        <button class="view-btn" onclick="openPasswordModal('images/citizen.jpeg')">View Full</button>
       </div>
+    </div>
 
-       <!-- Certificate 5 -->
-      <!-- Certificate 5 -->
-      <div class="certificate-item">
-        <div class="certificate-item-inner">
-          <img src="images/citizen.jpeg" class="cert-img" onclick="openPopup(this.src)">
-          <h4>Experienced as a Trainer & IT Support</h4>
-          <p>Certified by Citizen Infotech Pvt. Ltd.</p>
-          <button class="view-btn" onclick="openPopup('images/citizen.jpeg')">View Full</button>
-        </div>
-         </div>
+    <div class="certificate-item">
+      <div class="certificate-item-inner cert-wrapper">
+        <img src="images/highway.jpeg" class="cert-img">
+        <div class="watermark">Protected Image</div>
+        <h4>Computer Hardware & Networking</h4>
+        <p>Certified in Hardware Troubleshooting & Network Setup.</p>
+        <button class="view-btn" onclick="openPasswordModal('images/highway.jpeg')">View Full</button>
+      </div>
+    </div>
 
-         </div>
-         </div>
-        </section>
+  </div>
+</section>
 
-<!-- ================= Popup ================= -->
-          <div id="popup" class="popup">
-         <img id="popup-img">
-          </div>
-<!-- Popup -->
+<!-- ================= PASSWORD MODAL ================= -->
+<div id="password-modal" class="password-modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closePasswordModal()">&times;</span>
+    <h3>Enter Password to View Certificate</h3>
+    <input type="password" id="cert-password" placeholder="Enter password">
+    <button onclick="verifyPassword()">Submit</button>
+  </div>
+</div>
 
-<script>
-function openPopup(src) {
-    const popup = document.getElementById("popup");
-    const popupImg = document.getElementById("popup-img");
-    popup.style.display = "flex";
-    popupImg.src = src;
-}
+<!-- ================= POPUP ================= -->
+<div id="popup" class="popup" onclick="closePopup()">
+  <img id="popup-img">
+</div>
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
-</script>
-
-
-  <!--certificates Section ends -->
   <!--certificates Section ends -->
 
           <!-- Blog Section -->
@@ -799,16 +794,16 @@ function closePopup() {
               </div>
             </div>
             <!-- contact-info-item end -->
+
+            <!-- message Contact Form Start -->
       
-          <!-- Contact Form -->
-          <form action="send_mail.php" method="POST" class="contact-form padd-15">
-         <div class="row">
+<form id="contact-form" action="https://formspree.io/f/xblnkeae" method="POST" class="contact-form padd-15">
+  <div class="row">
     <div class="form-item col-6 padd-15">
       <div class="form-group">
         <input type="text" name="name" class="form-control" placeholder="Name*" required>
       </div>
     </div>
-
     <div class="form-item col-6 padd-15">
       <div class="form-group">
         <input type="email" name="email" class="form-control" placeholder="Email*" required>
@@ -837,11 +832,62 @@ function closePopup() {
       <button type="submit" class="btn">Send Message</button>
     </div>
   </div>
+
+  <div id="form-message" style="margin-top:15px; font-weight:bold;"></div>
 </form>
 
-          <!-- Contact Form End -->
-        </div>
-      </section>
+
+<script>
+function animateContactForm() {
+    const form = document.querySelector('.contact-form');
+    const formTop = form.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (formTop < windowHeight - 100) {
+        form.classList.add('animate');
+    }
+}
+
+window.addEventListener('scroll', animateContactForm);
+window.addEventListener('load', animateContactForm);
+</script>
+
+
+
+        <script>
+        document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault(); // prevent default submit
+
+    const form = this;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const msgDiv = document.getElementById("form-message");
+        if(data.ok) {
+            msgDiv.style.color = "green";
+            msgDiv.innerText = "Message sent successfully!";
+            form.reset();
+        } else {
+            msgDiv.style.color = "red";
+            msgDiv.innerText = "Failed to send message. Please try again.";
+        }
+    })
+    .catch(() => {
+        const msgDiv = document.getElementById("form-message");
+        msgDiv.style.color = "red";
+        msgDiv.innerText = "An error occurred. Try again later.";
+    });
+});
+</script>
+
       <!-- Contact Section End -->
 
     </div>
