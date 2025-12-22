@@ -277,37 +277,28 @@ select {
 
 /* Aside */
 
+/* ================= ASIDE ================= */
 .aside {
-  background: linear-gradient(-45deg, #ff512f, #dd2476, #24c6dc, #514a9d, #080808);
-  background-size: 400% 400%;
-  animation: gradientAnimation 10s ease infinite;
-  padding: 80px 0;
-  color: #fff;
-
+    background: linear-gradient(-45deg, #ff512f, #dd2476, #24c6dc, #514a9d, #080808);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
     width: 270px;
-    
     position: fixed;
     height: 100%;
     left: 0;
     top: 0;
     z-index: 11;
-    border-right: 1px solid #e8dfec;
-    /* padding: 30px; */
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    /* overflow-y: auto; */
+    color: #fff;
 }
 
 .aside .aside-inner {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
     padding: 30px;
+    height: 100%;
     overflow-y: auto;
 }
 
+/* ================= LOGO ================= */
 .aside .logo {
     padding: 30px 0;
 }
@@ -342,151 +333,116 @@ select {
     right: 0;
 }
 
+/* ================= NAV ================= */
+.aside .nav {
+    margin: 70px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.aside .nav li a {
+    color: #0f0f0f;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 45px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+}
+
+.aside .nav li a:hover {
+    padding-left: 8px;
+}
+
+/* ================= TOGGLER ================= */
 .aside .nav-toggler {
     height: 40px;
     width: 45px;
-    border: 1px solid #d4d4e3;
-    cursor: pointer;
     position: fixed;
-    left: 300px;
-    top: 20px;
-    z-index: 11;
-    border-radius: 5px;
-    background-color: #fdf9ff;
-    /* display: -ms-flexbox;
-    display: flex; */
+    top: 15px;
+    left: 15px;
+    border-radius: 6px;
+    background: #fff;
     display: none;
-    -ms-flex-align: center;
     align-items: center;
     justify-content: center;
-    -ms-flex-pack: center;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 20;
 }
 
-.aside .nav-toggler span {
-    height: 2px;
-    width: 18px;
-    display: inline-block;
-    position: relative;
-}
-
-.aside .nav-toggler.open span {
-    background-color: transparent;
-}
-
-.aside .nav-toggler span::before {
-    content: '';
+.aside .nav-toggler span,
+.aside .nav-toggler span::before,
+.aside .nav-toggler span::after {
+    background: #000;
     height: 2px;
     width: 18px;
     position: absolute;
-    top: -6px;
-    left: 0;
+    content: '';
+    transition: all 0.3s ease;
+}
+
+.aside .nav-toggler span::before { top: -6px; }
+.aside .nav-toggler span::after { top: 6px; }
+
+.aside .nav-toggler.open span {
+    background: transparent;
 }
 
 .aside .nav-toggler.open span::before {
     transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    top: 0px;
-}
-
-.aside .nav-toggler span::after {
-    content: '';
-    height: 2px;
-    width: 18px;
-    position: absolute;
-    top: 6px;
-    left: 0;
+    top: 0;
 }
 
 .aside .nav-toggler.open span::after {
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    top: 0px;
+    top: 0;
 }
 
-.aside .nav {
-    list-style: none;
-    margin: 70px 0;
-    padding: 0;
-}
-
-.aside .nav li {
-    display: block;
-}
-
-.aside .nav li a {
-    font-size: 16px;
-    font-weight: 600;
-    color: #302e4d;
-    text-decoration: none;
-    line-height: 45px;
-    display: block;
-    border-bottom: 1px solid #e8dfec;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    text-transform: capitalize;
-}
-
-.aside .nav li a:not(.active):hover {
-    padding-left: 5px;
-}
-
-.aside .nav li a .fa {
-    margin-right: 5px;
-}
-
+/* ================= COPYRIGHT ================= */
 .aside .copyright-text {
     position: absolute;
-    bottom: 5px;
-    font-size: 13px;
-    color: #7d7d7d;
+    bottom: 10px;
+    font-size: 12px;
+    color: rgba(15, 15, 15, 0.7);
 }
 
-
-/* Mobile Navigation */
+/* ================= MOBILE ================= */
 @media (max-width: 767px) {
-    .aside {
-        width: 60px; /* minimized width */
-        height: 100%;
-        overflow: hidden;
-        transition: width 0.3s ease;
-    }
 
-    .aside .logo a,
-    .aside .nav li a span,
-    .aside .copyright-text {
-        display: none; /* hide text/icons for compact view */
+    .aside {
+        width: 60px;
+        overflow: hidden;
     }
 
     .aside.open {
-        width: 220px; /* expand on toggler click */
+        width: 220px;
     }
 
-    .aside .nav {
-        margin: 60px 0 0 0;
+    /* hide text by default */
+    .aside .logo a,
+    .aside .nav li a span,
+    .aside .copyright-text {
+        display: none;
     }
 
-    .aside .nav li a {
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-left: 10px;
+    /* show text when open */
+    .aside.open .logo a,
+    .aside.open .nav li a span,
+    .aside.open .copyright-text {
+        display: inline;
     }
 
     .aside .nav-toggler {
         display: flex;
-        position: fixed;
-        left: 10px;
-        top: 10px;
-        z-index: 20;
     }
 
     .section {
-        left: 60px;
-        transition: left 0.3s ease;
+        margin-left: 60px;
+        transition: margin-left 0.3s ease;
     }
 
     .aside.open ~ .section {
-        left: 220px; /* shift section when nav opens */
+        margin-left: 220px;
     }
 }
 

@@ -16,22 +16,34 @@ window.ityped.init(document.querySelector('.iTyped'), {
 });
 
 
-// Select toggler and aside
 const navToggler = document.querySelector('.nav-toggler');
 const aside = document.querySelector('.aside');
+const mainContainer = document.querySelector('.main-container'); // select main content
 
-// Select all sections safely
-const sections = document.querySelectorAll('.section');
+navToggler.addEventListener('click', () => {
+    aside.classList.toggle('open');         // toggle sidebar
+    navToggler.classList.toggle('open');    // toggle hamburger animation
 
-if (navToggler && aside && sections.length > 0) {
-    navToggler.addEventListener('click', () => {
-        aside.classList.toggle('open'); // toggle aside open
-        sections.forEach(section => {
-            section.classList.toggle('open'); // toggle section shift
-        });
-    });
-}
+    // Shift main container on mobile only
+    if (window.innerWidth <= 767) {
+        if (aside.classList.contains('open')) {
+            mainContainer.style.marginLeft = '220px';
+        } else {
+            mainContainer.style.marginLeft = '60px';
+        }
+    }
+});
 
+// Optional: handle window resize to reset margin
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 767) {
+        mainContainer.style.marginLeft = '270px'; // desktop default
+    } else if (!aside.classList.contains('open')) {
+        mainContainer.style.marginLeft = '60px';
+    } else {
+        mainContainer.style.marginLeft = '220px';
+    }
+});
 
 
 
